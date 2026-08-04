@@ -169,30 +169,38 @@ export default function LobbyScreen({ player, onGameStart }) {
 
       {/* Share */}
       <div style={{
-        background: 'var(--bg-panel)',
-        border: '1px solid var(--border)',
-        borderRadius: 10,
-        padding: '14px 16px',
+        background: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.1))',
+        border: '1.5px solid var(--accent)',
+        borderRadius: 14,
+        padding: '20px 20px 16px',
+        boxShadow: '0 0 24px rgba(139,92,246,0.2)',
       }}>
-        <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginBottom: 8, letterSpacing: '0.1em' }}>
-          COMPARTÍ ESTE LINK CON TUS COMPAÑEROS
+        <div style={{ fontSize: '0.7rem', color: 'var(--accent)', marginBottom: 12, letterSpacing: '0.2em', fontFamily: 'Orbitron, monospace', fontWeight: 700 }}>
+          INVITÁ A TUS COMPAÑEROS
         </div>
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <div style={{
-            flex: 1, fontSize: '0.78rem', fontFamily: 'Orbitron, monospace',
-            color: 'var(--neon-cyan)', overflow: 'hidden', textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap', letterSpacing: '0.05em',
-          }}>
-            ?room={player.roomId}
-          </div>
-          <button
-            className="btn btn-ghost"
-            style={{ width: 'auto', padding: '8px 16px', fontSize: '0.7rem' }}
-            onClick={copyLink}
-          >
-            {copied ? '✓ Copiado' : 'Copiar'}
-          </button>
+        <div style={{
+          background: 'var(--bg-deep)',
+          borderRadius: 8,
+          padding: '10px 14px',
+          marginBottom: 12,
+          fontFamily: 'Orbitron, monospace',
+          fontSize: '0.75rem',
+          color: 'var(--neon-cyan)',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+          letterSpacing: '0.04em',
+          border: '1px solid rgba(6,182,212,0.2)',
+        }}>
+          {shareUrl}
         </div>
+        <button
+          className="btn btn-primary"
+          style={{ width: '100%', fontSize: '0.85rem', padding: '12px', letterSpacing: '0.1em' }}
+          onClick={copyLink}
+        >
+          {copied ? '✓ LINK COPIADO!' : '⧉ COPIAR LINK DE SALA'}
+        </button>
       </div>
 
       <style>{`
