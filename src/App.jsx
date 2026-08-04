@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import JoinScreen from './screens/JoinScreen'
 import LobbyScreen from './screens/LobbyScreen'
 import GameScreen from './screens/GameScreen'
@@ -8,15 +8,12 @@ import './App.css'
 export default function App() {
   const [screen, setScreen] = useState('join') // join | lobby | game | results
   const [player, setPlayer] = useState(null)    // { id, name, avatar, roomId }
-  const [roomId, setRoomId] = useState(null)
-  const [finalScores, setFinalScores] = useState([])
-
-  // Parse roomId from URL ?room=XXXX
-  useEffect(() => {
+  const [roomId, setRoomId] = useState(() => {
     const params = new URLSearchParams(window.location.search)
     const room = params.get('room')
-    if (room) setRoomId(room.toUpperCase())
-  }, [])
+    return room ? room.toUpperCase() : null
+  })
+  const [finalScores, setFinalScores] = useState([])
 
   function handleJoined(playerData) {
     setPlayer(playerData)
